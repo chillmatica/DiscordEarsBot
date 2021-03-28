@@ -275,14 +275,16 @@ async function connect(msg, mapKey) {
 
 
 function speak_impl(voice_Connection, mapKey) {
-    voice_Connection.on('speaking', async (user, speaking) => {
+    voice_Connection.on('speaking', async (user, speaking,c,d,e) => {
         if (speaking.bitfield == 0 || user.bot) {
             return
         }
-        console.log("voice_Connection:")
-        console.log(voice_Connection)
-        console.log("mapKey:")
-        console.log(mapKey)
+        console.log("voice_Connection: c")
+        console.log(c)
+        console.log("voice_Connection: d")
+        console.log(d)
+        console.log("voice_Connection: e")
+        console.log(e)
 
         /*if (!message.member.roles.cache.some((role) => role.name === 'Fleet Command')) {
           console.log(`Someone who was not fleet command was speaking. ${user.username}`)
