@@ -279,12 +279,16 @@ function speak_impl(voice_Connection, mapKey) {
         if (speaking.bitfield == 0 || user.bot) {
             return
         }
-        let memberthing = discordClient.members.cache.get(user.id)
+
         /*if (!message.member.roles.cache.some((role) => role.name === 'Fleet Command')) {
           console.log(`Someone who was not fleet command was speaking. ${user.username}`)
           return
         }*/
-        console.log(memberthing)
+        let thanos = client.users.fetch(user.id);
+        thanos.then(function(userguy) {
+            console.log(userguy)
+        });
+
         console.log(`I'm listening to ${user.username}`)
         // this creates a 16-bit signed PCM, stereo 48KHz stream
         const audioStream = voice_Connection.receiver.createStream(user, { mode: 'pcm' })
