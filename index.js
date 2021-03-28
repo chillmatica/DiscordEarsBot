@@ -280,7 +280,7 @@ function speak_impl(voice_Connection, mapKey) {
             return
         }
         if (!message.member.roles.cache.some((role) => role.name === 'Fleet Command') {
-          console.log("Someone who was not fleet command was speaking")
+          console.log(`Someone who was not fleet command was speaking. ${user.username}`)
           return
         }
         console.log(`I'm listening to ${user.username}`)
