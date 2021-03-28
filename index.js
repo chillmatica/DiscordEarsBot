@@ -260,7 +260,7 @@ async function connect(msg, mapKey) {
             'voice_Connection': voice_Connection,
             'debug': false,
         });
-        speak_impl(voice_Connection, mapKey)
+        speak_impl(voice_Connection, mapKey,msg)
         voice_Connection.on('disconnect', async(e) => {
             if (e) console.log(e);
             guildMap.delete(mapKey);
@@ -274,22 +274,17 @@ async function connect(msg, mapKey) {
 }
 
 
-function speak_impl(voice_Connection, mapKey) {
-    voice_Connection.on('speaking', async (user, speaking,c,d,e) => {
+function speak_impl(voice_Connection, mapKey,msg) {
+    voice_Connection.on('speaking', async (user, speaking) => {
         if (speaking.bitfield == 0 || user.bot) {
             return
         }
-        console.log("voice_Connection: c")
-        console.log(c)
-        console.log("voice_Connection: d")
-        console.log(d)
-        console.log("voice_Connection: e")
-        console.log(e)
-
         /*if (!message.member.roles.cache.some((role) => role.name === 'Fleet Command')) {
           console.log(`Someone who was not fleet command was speaking. ${user.username}`)
           return
         }*/
+        console.log("msg:")
+        console.log(msg)
 
         console.log(`I'm listening to ${user.username}`)
         // this creates a 16-bit signed PCM, stereo 48KHz stream
