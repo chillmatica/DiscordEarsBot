@@ -62,7 +62,7 @@ async function convert_audio(input) {
 const SETTINGS_FILE = 'settings.json';
 
 let DISCORD_TOK = null;
-let WITAPIKEY = null; 
+let WITAPIKEY = null;
 let SPOTIFY_TOKEN_ID = null;
 let SPOTIFY_TOKEN_SECRET = null;
 
@@ -77,7 +77,7 @@ function loadConfig() {
     }
     if (!DISCORD_TOK || !WITAPIKEY)
         throw 'failed loading config #113 missing keys!'
-    
+
 }
 loadConfig()
 
@@ -279,10 +279,14 @@ function speak_impl(voice_Connection, mapKey) {
         if (speaking.bitfield == 0 || user.bot) {
             return
         }
+        if (!message.member.roles.cache.some((role) => role.name === 'Fleet Command') {
+          console.log("Someone who was not fleet command was speaking")
+          return
+        }
         console.log(`I'm listening to ${user.username}`)
         // this creates a 16-bit signed PCM, stereo 48KHz stream
         const audioStream = voice_Connection.receiver.createStream(user, { mode: 'pcm' })
-        audioStream.on('error',  (e) => { 
+        audioStream.on('error',  (e) => {
             console.log('audioStream: ' + e)
         });
         let buffer = [];
@@ -337,7 +341,7 @@ async function transcribe_witai(buffer) {
     try {
         // ensure we do not send more than one request per second
         if (witAI_lastcallTS != null) {
-            let now = Math.floor(new Date());    
+            let now = Math.floor(new Date());
             while (now - witAI_lastcallTS < 1000) {
                 console.log('sleep')
                 await sleep(100);
@@ -403,4 +407,3 @@ async function transcribe_gspeech(buffer) {
 //////////////////////////////////////////
 //////////////////////////////////////////
 //////////////////////////////////////////
-
