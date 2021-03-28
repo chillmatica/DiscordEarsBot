@@ -279,6 +279,10 @@ function speak_impl(voice_Connection, mapKey) {
         if (speaking.bitfield == 0 || user.bot) {
             return
         }
+        console.log("Start user:")
+        console.log(user)
+        console.log("Start speaking:")
+        console.log(speaking)
         if (!message.member.roles.cache.some((role) => role.name === 'Fleet Command')) {
           console.log(`Someone who was not fleet command was speaking. ${user.username}`)
           return
