@@ -281,12 +281,13 @@ function speak_impl(voice_Connection, mapKey) {
         }
         console.log("Start user:")
         console.log(user)
-        console.log("Start speaking:")
-        console.log(speaking)
-        if (!message.member.roles.cache.some((role) => role.name === 'Fleet Command')) {
+        let thisuser = client.users.fetch(user.id)
+        console.log(thisuser)
+        /*if (!message.member.roles.cache.some((role) => role.name === 'Fleet Command')) {
           console.log(`Someone who was not fleet command was speaking. ${user.username}`)
           return
-        }
+        }*/
+
         console.log(`I'm listening to ${user.username}`)
         // this creates a 16-bit signed PCM, stereo 48KHz stream
         const audioStream = voice_Connection.receiver.createStream(user, { mode: 'pcm' })
