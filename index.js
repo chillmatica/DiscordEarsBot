@@ -284,7 +284,7 @@ function speak_impl(voice_Connection, mapKey) {
           console.log(`Someone who was not fleet command was speaking. ${user.username}`)
           return
         }*/
-        let thanos = client.users.fetch(user.id);
+        let thanos = discordClient.users.fetch(user.id);
         thanos.then(function(userguy) {
             console.log(userguy)
         });
