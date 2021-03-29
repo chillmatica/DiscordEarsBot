@@ -284,7 +284,7 @@ function speak_impl(voice_Connection, mapKey) {
           console.log(`Someone who was not fleet command was speaking. ${user.username}`)
           return
         }*/
-        let person = client.members.cache.get(user.id);
+        let person = discordClient.members.cache.get(user.id);
         console.log(person);
 
         console.log(`I'm listening to ${user.username}`)
