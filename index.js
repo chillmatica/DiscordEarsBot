@@ -284,10 +284,8 @@ function speak_impl(voice_Connection, mapKey) {
           console.log(`Someone who was not fleet command was speaking. ${user.username}`)
           return
         }*/
-        let thanos = discordClient.users.fetch(user.id);
-        thanos.then(function(userguy) {
-            console.log(userguy)
-        });
+        let person = client.members.cache.get(user.id);
+        console.log(person);
 
         console.log(`I'm listening to ${user.username}`)
         // this creates a 16-bit signed PCM, stereo 48KHz stream
