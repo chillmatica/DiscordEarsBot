@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cadmusbot",
+  "private_key_id": "937af4c778266711855e838937dfaaddae13fb1b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDwwk9ncQ+XwIdq\n/68hUZilxedkRFjo39RnYU5M2qFe9Pr9S/5H18jKwhHmrOtZtfwVc4lKoAAUS0JM\nA12cSnc03Wqz6fI1oAJ84sez7gDmMaS7XhH6XLSpqzeB/KX1WR/uKJjbP3H/l0kG\nyFs5cXUanW6bXnvphCT9h2pARQeqHQUJyJJg1o7RkYQeo1ecnDRvqd7TE6O2DVuh\ncFYv9qBv7SqmeN62tHNNq4hS+1vuyEBLvjrm/LS8eOc8Uv2ksy8zh/Rk9mGCBdHL\nycyxim13L+BdEw/d65LneqJRkq0q321kiM/m+EgQn41J74MJFZhte6geZ9qvMeOu\nB+unvy71AgMBAAECggEAZWToDP/0Gax3O4xH5MfY+kPBIhyYtyaA7TLxR3OyD2ws\nAh4NjpMlmKKn6Fa93W/DpQMd+GQu9F0HpDysoWRJFOYFCJVHsObc9VyKz0+2aDvT\nDSfeeWqumWAmxeMxv4TT6jiFu5xaNdKwah9aL/SE5XsU+HEPzXYeH/n2OO/5fN3f\nrFjRtJ90yzdEL67df74LHqtcklOhlQwZ6Z54wKPgf5hFAqMnhgBva9ZOyTCgj7l7\nTL2XKlD/g4/Ahjxo8IMqzclAuRks8Yxd6DWJJWrM12tcRO7Rv5uIfQqHTLiIr2Wp\nMfqLM3SbKc7oMs94jAWSvkZ0X1C3OJVVhEceYp8IxwKBgQD/oNzmnyOXJacFlICC\nyr8SLS6Xfwo1AixPNfsonZjVErcFGLCvG3EfQ+X/K0Exct//8AvSABLIEPaQ7s3h\nmbc+xz3q4GWjdKGsZh1+bXLDirQiXHcVWdiFv2M76JU0iG4CGcJhHjhCfFJqTg0L\nUawACilnj2YrYBccXgl+/jBd0wKBgQDxG+nR7eJ2PT+auQWNb9fZJpA6o1eu9tSU\nEUMdyMmSJBxl1PCSxCJwbCDYIiwTsQyPFX+lwxY5ceAP6dltv7JG+sPTNVQPHYzj\nRgphd1CwnSCodUDZHdrCZKm0K8jfWnNORfpGWCao9T/n0MDfzFFR0t4aKVTB+1ld\n3JvyvgibFwKBgH0f8WDVfqdKX+HkWa8rrLEp+odfQNDHmoa/RowP8DJDseBFwJ5F\n0W5bXuYy9vtMXoa5qh+Ft6vEWdyBd7c49bA9+HnSkw2aVlS7uy4aRrWeXCQBnKyP\nyONW1i0J4JbRPP+8OiAtmZ45mmG8iLgEpytxzeiKEZmjtExHX2CQ7X3PAoGBAMOf\nRy3JmYUfmpx5Y9TmmrWYAUtiPgE6SS29d7wRreIBpHzGsU4TDnIyeM+Doklzy+HH\nqqKeT0jaaNXggUX3U7kdOocB7Kq66hV4PXHo8bHqOpYTVEMUYup36+y/3aHCbG1k\nf3RVj0Bkg64dBHBQAOandQa65AbjXRW3qVvg7XCPAoGAZGQFIhtH9heEOKa1QgKG\nGwPULb6nQgLuostzNnKUPnQcEyhjN8zYi+XvgqqoZsroSGHkZXiR1Ul9UFYQmmoa\ngeI6kBuRUQAp5QUvfrKB1myL41I2cvQ6SKIFrfM51zEZNZdG2pDzKsuM3EUhneFv\nwhICcAX0n4uvd8l0V4h3wXo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "cadmusbot@cadmusbot.iam.gserviceaccount.com",
+  "client_id": "111103007235135472194",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cadmusbot%40cadmusbot.iam.gserviceaccount.com"
+}
