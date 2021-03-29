@@ -279,16 +279,10 @@ function speak_impl(voice_Connection, mapKey) {
         if (speaking.bitfield == 0 || user.bot) {
             return
         }
-
-        /*if (!message.member.roles.cache.some((role) => role.name === 'Fleet Command')) {
-          console.log(`Someone who was not fleet command was speaking. ${user.username}`)
-          return
-        }*/
         let guild = discordClient.guilds.cache.get('748123008115277865');
         let member = guild.members.cache.get(user.id);
-        console.log(member);
         if (!member.roles.cache.some((role) => role.name === 'Fleet Command')) {
-          console.log(`Someone who was not fleet command was speaking. ${user.username}`)
+          //console.log(`Someone who was not fleet command was speaking. ${user.username}`)
           return
         }
 
