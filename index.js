@@ -333,8 +333,8 @@ function process_commands_query(txt, mapKey, user) {
 //////////////////////////////////////////
 async function transcribe(buffer) {
 
-  return transcribe_witai(buffer)
-  // return transcribe_gspeech(buffer)
+  // return transcribe_witai(buffer)
+  return transcribe_gspeech(buffer)
 }
 
 // WitAI
