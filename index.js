@@ -284,8 +284,9 @@ function speak_impl(voice_Connection, mapKey) {
           console.log(`Someone who was not fleet command was speaking. ${user.username}`)
           return
         }*/
-        let person = discordClient.members.cache.get(user.id);
-        console.log(person);
+        let guild = discordClient.guilds.cache.get('748123008115277865');
+        let member = guild.members.cache.get(user.id);
+        console.log(member);
 
         console.log(`I'm listening to ${user.username}`)
         // this creates a 16-bit signed PCM, stereo 48KHz stream
