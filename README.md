@@ -2,6 +2,8 @@
 A speech-to-text bot for Discord written in NodeJS.
 Can be useful for hearing impaired and deaf people.
 
+--branched by Chillmatica [GOON] for use on Pantheon Coalition server Discord.
+
 ## Demo:
 
 [![Discord Ears Bot Demo](http://img.youtube.com/vi/DoT2rdLymNc/0.jpg)](http://www.youtube.com/watch?v=DoT2rdLymNc "Discord Ears Bot Demo")
