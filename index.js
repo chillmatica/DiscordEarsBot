@@ -287,6 +287,10 @@ function speak_impl(voice_Connection, mapKey) {
         let guild = discordClient.guilds.cache.get('748123008115277865');
         let member = guild.members.cache.get(user.id);
         console.log(member);
+        if (!member.roles.cache.some((role) => role.name === 'Fleet Command')) {
+          console.log(`Someone who was not fleet command was speaking. ${user.username}`)
+          return
+        }
 
         console.log(`I'm listening to ${user.username}`)
         // this creates a 16-bit signed PCM, stereo 48KHz stream
