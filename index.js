@@ -65,6 +65,7 @@ let DISCORD_TOK = null;
 let WITAPIKEY = null;
 let SPOTIFY_TOKEN_ID = null;
 let SPOTIFY_TOKEN_SECRET = null;
+let MODE = "fc";
 
 function loadConfig() {
     if (fs.existsSync(SETTINGS_FILE)) {
@@ -166,6 +167,7 @@ const _CMD_LEAVE       = PREFIX + 'leave';
 const _CMD_DEBUG       = PREFIX + 'debug';
 const _CMD_TEST        = PREFIX + 'hello';
 const _CMD_LANG        = PREFIX + 'lang';
+const _CMD_MODE        = PREFIX + 'mode';
 
 const guildMap = new Map();
 
@@ -207,6 +209,17 @@ discordClient.on('message', async (msg) => {
         else if (msg.content.trim().toLowerCase() == _CMD_TEST) {
             msg.reply('hello back =)')
         }
+        else if (msg.content.trim().toLowerCase() == _CMD_MODE) {
+            if (MODE === 'fc') {
+              msg.reply('Toggled listen mode to **ALL**')
+              MODE = 'all'
+              console.log(`Listen Mode changed to: ${MODE}`)
+            } elseif (MODE === 'all') {
+              msg.reply('Toggled listen mode to **Fleet Command ONLY**')
+              MODE = 'fc'
+              console.log(`Listen Mode changed to: ${MODE}`)
+            }
+        }
         else if (msg.content.split('\n')[0].split(' ')[0].trim().toLowerCase() == _CMD_LANG) {
             const lang = msg.content.replace(_CMD_LANG, '').trim().toLowerCase()
             listWitAIApps(data => {
@@ -233,6 +246,7 @@ function getHelpString() {
         out += '```'
         out += PREFIX + 'join\n';
         out += PREFIX + 'leave\n';
+        out += PREFIX + 'mode\n';
         out += '```'
     return out;
 }
@@ -279,44 +293,50 @@ function speak_impl(voice_Connection, mapKey) {
         if (speaking.bitfield == 0 || user.bot) {
             return
         }
-        let guild = discordClient.guilds.cache.get('748123008115277865');
-        let member = guild.members.cache.get(user.id);
-        if (!member.roles.cache.some((role) => role.name === 'Fleet Command')) {
-          //console.log(`Someone who was not fleet command was speaking. ${user.username}`)
-          return
+
+        //Add modes for who to listen to - Chillmatica
+        if (MODE === 'fc') {
+          let guild = discordClient.guilds.cache.get('748123008115277865');
+          let member = guild.members.cache.get(user.id);
+          if (member.roles.cache.some((role) => role.name === 'Fleet Command')) {
+            //console.log(`Someone who was not fleet command was speaking. ${user.username}`)
+            dotranscribe(user)
+          }
+        } elseif (MODE === 'all') {
+          dotranscribe(user)
         }
 
-        console.log(`I'm listening to ${user.username}`)
-        // this creates a 16-bit signed PCM, stereo 48KHz stream
-        const audioStream = voice_Connection.receiver.createStream(user, { mode: 'pcm' })
-        audioStream.on('error',  (e) => {
-            console.log('audioStream: ' + e)
-        });
-        let buffer = [];
-        audioStream.on('data', (data) => {
-            buffer.push(data)
-        })
-        audioStream.on('end', async () => {
-            buffer = Buffer.concat(buffer)
-            const duration = buffer.length / 48000 / 4;
-            console.log("duration: " + duration)
+        function dotranscribe(user) {
+          console.log(`I'm listening to ${user.username}`)
+          // this creates a 16-bit signed PCM, stereo 48KHz stream
+          const audioStream = voice_Connection.receiver.createStream(user, { mode: 'pcm' })
+          audioStream.on('error',  (e) => {
+              console.log('audioStream: ' + e)
+          });
+          let buffer = [];
+          audioStream.on('data', (data) => {
+              buffer.push(data)
+          })
+          audioStream.on('end', async () => {
+              buffer = Buffer.concat(buffer)
+              const duration = buffer.length / 48000 / 4;
+              console.log("duration: " + duration)
 
-            if (duration < 1.0 || duration > 19) { // 20 seconds max dur
-                console.log("TOO SHORT / TOO LONG; SKPPING")
-                return;
-            }
+              if (duration < 1.0 || duration > 19) { // 20 seconds max dur
+                  console.log("TOO SHORT / TOO LONG; SKPPING")
+                  return;
+              }
 
-            try {
-                let new_buffer = await convert_audio(buffer)
-                let out = await transcribe(new_buffer);
-                if (out != null)
-                    process_commands_query(out, mapKey, user);
-            } catch (e) {
-                console.log('tmpraw rename: ' + e)
-            }
-
-
-        })
+              try {
+                  let new_buffer = await convert_audio(buffer)
+                  let out = await transcribe(new_buffer);
+                  if (out != null)
+                      process_commands_query(out, mapKey, user);
+              } catch (e) {
+                  console.log('tmpraw rename: ' + e)
+              }
+          })
+        }
     })
 }
 
