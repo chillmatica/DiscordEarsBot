@@ -214,7 +214,7 @@ discordClient.on('message', async (msg) => {
               msg.reply('Toggled listen mode to **ALL**')
               MODE = 'all'
               console.log(`Listen Mode changed to: ${MODE}`)
-            } elseif (MODE === 'all') {
+            } else if (MODE === 'all') {
               msg.reply('Toggled listen mode to **Fleet Command ONLY**')
               MODE = 'fc'
               console.log(`Listen Mode changed to: ${MODE}`)
