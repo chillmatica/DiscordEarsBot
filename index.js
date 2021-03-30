@@ -302,7 +302,7 @@ function speak_impl(voice_Connection, mapKey) {
             //console.log(`Someone who was not fleet command was speaking. ${user.username}`)
             dotranscribe(user)
           }
-        } elseif (MODE === 'all') {
+        } else if (MODE === 'all') {
           dotranscribe(user)
         }
 
