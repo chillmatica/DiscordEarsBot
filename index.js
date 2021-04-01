@@ -264,6 +264,7 @@ async function connect(msg, mapKey) {
     try {
         let voice_Channel = await discordClient.channels.fetch(msg.member.voice.channelID,true,true);
         //console.log(discordClient.channels.fetch())
+        console.log(`member.voice: ${msg.member.voice}`)
         console.log(`Channel ID number was: ${msg.member.voice.channelID}`)
         console.log(`msg.member.voice.channel: ${msg.member.voice.channel}`)
         console.log('voice_Channel var')
