@@ -237,7 +237,7 @@ discordClient.on('message', async (msg) => {
         }
     } catch (e) {
         console.log('discordClient message: ' + e)
-        msg.reply('Error#180: Something went wrong, try again or contact the developers if this keeps happening.');
+        msg.reply('Error#180: Something went wrong.');
     }
 })
 
@@ -263,6 +263,8 @@ class Silence extends Readable {
 async function connect(msg, mapKey) {
     try {
         let voice_Channel = await discordClient.channels.fetch(msg.member.voice.channelID);
+        console.log(discordClient.channels.fetch())
+        console.log(msg.member.voice)
         if (!voice_Channel) return msg.reply("Error: The voice channel does not exist!");
         let text_Channel = await discordClient.channels.fetch(msg.channel.id);
         if (!text_Channel) return msg.reply("Error: The text channel does not exist!");
