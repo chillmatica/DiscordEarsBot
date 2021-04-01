@@ -264,7 +264,8 @@ async function connect(msg, mapKey) {
     try {
         let voice_Channel = await discordClient.channels.fetch(msg.member.voice.channelID);
         //console.log(discordClient.channels.fetch())
-        console.log(msg.member.voice)
+        console.log(`Channel ID number was: ${msg.member.voice.channelID}`)
+        console.log(voice_Channel)
         if (!voice_Channel) return msg.reply("Error: The voice channel does not exist!");
         let text_Channel = await discordClient.channels.fetch(msg.channel.id);
         if (!text_Channel) return msg.reply("Error: The text channel does not exist!");
